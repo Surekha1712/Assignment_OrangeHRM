@@ -1,6 +1,6 @@
 const {test,expect}=require('@playwright/test')
 
-test.skip("Login with valid Cerdenitals",async ({page})=>{
+test("Login with valid Cerdenitals",async ({page})=>{
     await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     
     await page.waitForLoadState('domcontentloaded');
@@ -14,7 +14,7 @@ test.skip("Login with valid Cerdenitals",async ({page})=>{
     await page.waitForTimeout(5000)
     
 })
-test.skip("Login without valid ceredenitals",async ({page})=>{
+test("Login without valid ceredenitals",async ({page})=>{
     await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(5000)
@@ -33,7 +33,7 @@ test.skip("Login without valid ceredenitals",async ({page})=>{
 })
     //Credenitals without any input
 
-test.only("Login without inputs ceredenitals",async ({page})=>{
+test("Login without inputs ceredenitals",async ({page})=>{
     await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(5000)

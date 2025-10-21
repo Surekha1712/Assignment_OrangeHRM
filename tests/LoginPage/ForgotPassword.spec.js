@@ -1,5 +1,5 @@
 const {test,expect}=require('@playwright/test')
-test.only("Forgot Pawword Test", async ({page})=>{
+test("Forgot Pawword Test", async ({page})=>{
      await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 
      await page.locator("//p[@class='oxd-text oxd-text--p orangehrm-login-forgot-header']").click();

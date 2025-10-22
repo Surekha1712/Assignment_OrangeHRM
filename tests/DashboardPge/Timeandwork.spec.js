@@ -36,7 +36,8 @@ await noteLocator.fill("This is report time in orangehrm you should be on time")
 const note = await noteLocator.inputValue();
 await expect(note).toContain("This is report time in orangehrm you should be on time");
 console.log(note);
+await page.waitForTimeout(5000);
 await page.locator("//button[normalize-space()='Out']").click();
  
-  await page.waitForTimeout(5000);
+  
 });

@@ -21,22 +21,25 @@ test("Login with invalid Credentials and select date", async ({ page }) => {
   const dateInput = page.locator("(//input[@placeholder='yyyy-dd-mm'])[1]");
   await dateInput.click(); 
   await dateInput.fill("2025-32-2");
-  await page.locator("//button[normalize-space()='In']").click();
+  await page.waitForTimeout(3000)
+  await page.locator("//button[normalize-space()='Out']").click();
   const error=await page.locator("//span[text()='Should be a valid date in yyyy-dd-mm format']")
-  await expect(error).toHaveText("Should be a valid date in yyyy-dd-mm format", { timeout: 10000 });
+  await expect(error).toHaveText("Should be a valid date in yyyy-dd-mm format", { timeout: 1000 });
   const errorText = await error.textContent();
-    console.log("Login error message:", errorText);
+    console.log("Valid format:", errorText);
 
   //Interact with time 
   const Time = page.locator("(//input[@placeholder='hh:mm'])");
   await Time.click(); 
   await Time.fill("");
-  await page.locator("//button[normalize-space()='In']").click();
+  await page.locator("//button[normalize-space()='Out']").click();
   const error1=await page.locator("//span[text()='Required']")
-  await expect(error1).toHaveText("Required", { timeout: 10000 });
+  await expect(error1).toHaveText("Required", { timeout: 1000 });
+  const req1=await error1.textContent();
+   console.log("Valid Input:",req1)
 
 
-await page.locator("//button[normalize-space()='In']").click();
+await page.locator("//button[normalize-space()='Out']").click();
  
   await page.waitForTimeout(3000);
 });

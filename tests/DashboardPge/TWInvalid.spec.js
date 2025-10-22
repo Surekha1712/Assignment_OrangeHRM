@@ -22,7 +22,7 @@ test("Login with invalid Credentials and select date", async ({ page }) => {
   await dateInput.click(); 
   await dateInput.fill("2025-32-2");
   await page.waitForTimeout(3000)
-  await page.locator("//button[normalize-space()='Out']").click();
+  await page.locator("//button[normalize-space()='In']").click();
   const error=await page.locator("//span[text()='Should be a valid date in yyyy-dd-mm format']")
   await expect(error).toHaveText("Should be a valid date in yyyy-dd-mm format", { timeout: 1000 });
   const errorText = await error.textContent();
@@ -32,14 +32,14 @@ test("Login with invalid Credentials and select date", async ({ page }) => {
   const Time = page.locator("(//input[@placeholder='hh:mm'])");
   await Time.click(); 
   await Time.fill("");
-  await page.locator("//button[normalize-space()='Out']").click();
+  await page.locator("//button[normalize-space()='In']").click();
   const error1=await page.locator("//span[text()='Required']")
   await expect(error1).toHaveText("Required", { timeout: 1000 });
   const req1=await error1.textContent();
    console.log("Valid Input:",req1)
 
 
-await page.locator("//button[normalize-space()='Out']").click();
+await page.locator("//button[normalize-space()='In']").click();
  
   await page.waitForTimeout(3000);
 });

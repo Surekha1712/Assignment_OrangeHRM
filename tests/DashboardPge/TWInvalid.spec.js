@@ -19,6 +19,7 @@ test("Login with invalid Credentials and select date", async ({ page }) => {
 
   // Interact with date 
   const dateInput = page.locator("(//input[@placeholder='yyyy-dd-mm'])[1]");
+  // await page.clear();
   await dateInput.click(); 
   await dateInput.fill("2025-32-2");
   await page.waitForTimeout(3000)
@@ -30,6 +31,7 @@ test("Login with invalid Credentials and select date", async ({ page }) => {
 
   //Interact with time 
   const Time = page.locator("(//input[@placeholder='hh:mm'])");
+  await page.clear();
   await Time.click(); 
   await Time.fill("");
   await page.locator("//button[normalize-space()='In']").click();
@@ -39,7 +41,7 @@ test("Login with invalid Credentials and select date", async ({ page }) => {
    console.log("Valid Input:",req1)
 
 
-await page.locator("//button[normalize-space()='In']").click();
+await page.locator("//button[normalize-space()='Out']").click();
  
   await page.waitForTimeout(3000);
 });
